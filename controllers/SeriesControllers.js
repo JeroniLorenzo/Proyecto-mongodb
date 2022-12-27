@@ -61,14 +61,14 @@ SeriesController.getSerieByTittle = async (req, res) => {
     }
 }
 
-SeriesController.getSerieByWeekly = async (req, res) => {
+SeriesController.getSerieByRating = async (req, res) => {
 
-    let weekly = req.body.weekly;
+    let rating = req.body.rating;
 
     try {
 
         await Serie.find({
-            weekly: weekly
+            rating: rating
         })
             .then(foundSeries => {
                 res.send(foundSeries)

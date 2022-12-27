@@ -6,7 +6,7 @@ const router = express.Router();
 //Importo el middleware de auth...
 const auth = require('../middlewares/auth');
 
-const SeriesController = require('../controllers/SeriesController');
+const SeriesController = require('../controllers/SeriesControllers');
 
 //Endpoints
 

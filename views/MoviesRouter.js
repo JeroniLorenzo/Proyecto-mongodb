@@ -6,7 +6,7 @@ const router = express.Router();
 //Importo el middleware de auth...
 const auth = require('../middlewares/auth');
 
-const MoviesController = require('../controllers/MoviesController');
+const MoviesController = require('../controllers/MoviesControllers');
 
 //Endpoints
 
@@ -20,7 +20,7 @@ router.delete("/", MoviesController.deleteMovie);
 router.get("/profile/TopRated/:rating", auth, MoviesController.getMovieByRating);
 router.get("/profile/:_id", auth, MoviesController.getMovieById);
 router.get("/profile/tittle/:tittle", auth, MoviesController.getMovieByTittle);
-router.get("/profile/genre/:name", auth, MoviesController.getMovieByName);
+router.get("/profile/genre/:name", auth, MoviesController.getMovieByGenre);
 
 
 //Exporto router para que pueda ser importado desde otros ficheros una vez ha ejecutado la lógica de éste(siempre igual)
