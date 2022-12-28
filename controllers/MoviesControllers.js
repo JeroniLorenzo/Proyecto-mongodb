@@ -157,7 +157,7 @@ MoviesController.deleteMovie = async (req, res) => {
         })
 
         if (deleted) {
-            res.send({ "Message": `The movie: ${deleted.name} ${deleted.surname} has been successfuly deleted` })
+            res.send({ "Message": `The movie: ${deleted.tittle} has been successfuly deleted` })
         }
     } catch (error) {
         console.log("Error deleting movie", error);

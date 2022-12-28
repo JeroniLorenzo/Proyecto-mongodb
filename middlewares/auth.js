@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
     // Comprueba si el header (metadatos de la página o si lo hacemos por Postman, está en el authorization) tiene el token
     if(!req.headers.authorization) {
         //Si no lo tiene, no dejará ejecutar la función controladora del endpoint (ver en usuarioRouter) y envía un mensaje de que no hay acceso
-        res.status(401).json({ msg: "Acceso no autorizado" });
+        res.status(401).json({ msg: "Denied Acces" });
     } else {
 
         // Si lo tiene, Lo extrae
