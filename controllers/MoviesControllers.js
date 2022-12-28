@@ -114,7 +114,7 @@ MoviesController.newMovie = async (req, res) => {
         })
 
         if (movie) {
-            res.send({ "Message": `Movie: ${movie.name} has been added successfuly` })
+            res.send({ "Message": `Movie: ${movie.tittle} has been added successfuly` })
         }
 
     } catch (error) {
@@ -128,6 +128,10 @@ MoviesController.updateMovie = async (req, res) => {
     let _id = req.body._id;
     let newTittle = req.body.tittle;
     let newCast = req.body.cast;
+    let newGenre = req.body.genre;
+    let newYear = req.body.year;
+    let newRating = req.body.rating;
+    let newDescription = req.body.description;
 
     try {
         let updated = await Movie.findOneAndUpdate(
@@ -136,7 +140,11 @@ MoviesController.updateMovie = async (req, res) => {
             //Campos a cambiar
             {
                 tittle: newTittle,
-                cast: newCast
+                cast: newCast,
+                genre: newGenre,
+                year: newYear,
+                rating: newRating,
+                description: newDescription
             }).setOptions({ returnDocument: 'after' })
         //con setOptions en este caso voy a exigir que me devuelva el documento modificado
 
