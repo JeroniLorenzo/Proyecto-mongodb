@@ -143,6 +143,11 @@ SeriesController.updateSerie = async (req, res) => {
     let _id = req.body._id;
     let newTittle = req.body.tittle;
     let newCast = req.body.cast;
+    let newGenre = req.body.genre;
+    let newYear = req.body.year;
+    let newRating = req.body.rating;
+    let newNext7Days = req.body.next7Days;
+    let newCinemaOrTheaters = req.body.cinemaOrTheater;
 
     try {
         let updated = await Serie.findOneAndUpdate(
@@ -151,7 +156,12 @@ SeriesController.updateSerie = async (req, res) => {
             //Campos a cambiar
             {
                 tittle: newTittle,
-                cast: newCast
+                cast: newCast,
+                genre: newGenre,
+                year: newYear,
+                rating: newRating,
+                next7Days: newNext7Days,
+                cinemaOrTheaters: newCinemaOrTheaters
             }).setOptions({ returnDocument: 'after' })
         //con setOptions en este caso voy a exigir que me devuelva el documento modificado
 
