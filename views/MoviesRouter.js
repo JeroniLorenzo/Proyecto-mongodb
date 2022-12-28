@@ -17,8 +17,8 @@ router.delete("/", MoviesController.deleteMovie);
 
 
 //Endpoints with middleware...
-router.get("/profile/TopRated/:rating", auth, MoviesController.getMovieByRating);
-router.get("/profile/:_id", auth, MoviesController.getMovieById);
+router.get("/profile/rating/:rating", auth, MoviesController.getMovieByRating);
+router.get("/profile/id/:_id", auth, MoviesController.getMovieById);
 router.get("/profile/tittle/:tittle", auth, MoviesController.getMovieByTittle);
 router.get("/profile/genre/:genre", auth, MoviesController.getMovieByGenre);
 

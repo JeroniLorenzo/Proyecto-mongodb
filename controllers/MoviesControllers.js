@@ -20,26 +20,20 @@ MoviesController.getAllMovies = async (req, res) => {
 }
 
 MoviesController.getMovieById = async (req, res) => {
+    let _id = req.body._id;
 
-    //Este id es el id que ha venido por parámetro en el endpoint (url)
-    let _id = req.params._id;
-    let movie = req.movie.movie[0];
+    try {
 
-    //Estos datos de movie son lo que el middleware auth ha decodificado del token ;)
-    if (_id !== movie._id) {
+        await Movie.find({
+            _id: _id
 
-        res.send({ "Msg": "Denied acces" });
-    } else {
+        })
+            .then(foundMovies => {
+                res.send(foundMovies)
+            })
 
-        res.send({
-
-            "id": movie._id,
-            "tittle": movie.tittle,
-            "cast": movie.cast,
-            "year": movie.year,
-            "description": movie.description,
-
-        });
+    } catch (error) {
+        console.log(error);
     }
 }
 
@@ -63,13 +57,11 @@ MoviesController.getMovieByTittle = async (req, res) => {
 
 MoviesController.getMovieByGenre = async (req, res) => {
 
-    let tittle = req.body.tittle;
     let genre = req.body.genre;
 
     try {
 
         await Movie.find({
-            tittle: tittle,
             genre: genre
 
         })
