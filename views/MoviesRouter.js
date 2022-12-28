@@ -20,7 +20,7 @@ router.delete("/", MoviesController.deleteMovie);
 router.get("/profile/TopRated/:rating", auth, MoviesController.getMovieByRating);
 router.get("/profile/:_id", auth, MoviesController.getMovieById);
 router.get("/profile/tittle/:tittle", auth, MoviesController.getMovieByTittle);
-router.get("/profile/genre/:name", auth, MoviesController.getMovieByGenre);
+router.get("/profile/genre/:genre", auth, MoviesController.getMovieByGenre);
 
 
 //Exporto router para que pueda ser importado desde otros ficheros una vez ha ejecutado la lógica de éste(siempre igual)
