@@ -17,8 +17,8 @@ router.delete("/", SeriesController.deleteSerie);
 
 
 //Endpoints with middleware...
-router.get("/profile/TopRated/:topRated", auth, SeriesController.getSerieByRating);
-router.get("/profile/:_id", auth, SeriesController.getSerieById);
+router.get("/profile/rating/:rating", auth, SeriesController.getSerieByRating);
+router.get("/profile/id/:_id", auth, SeriesController.getSerieById);
 router.get("/profile/tittle/:tittle", auth, SeriesController.getSerieByTittle);
 router.get("/profile/weekly/:name", auth, SeriesController.getSerieByWeekly);
 router.get("/profile/cinemas/:name", auth, SeriesController.getSerieByCinemaOrTheater);

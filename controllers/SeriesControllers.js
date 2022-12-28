@@ -20,26 +20,20 @@ SeriesController.getAllSeries = async (req, res) => {
 }
 
 SeriesController.getSerieById = async (req, res) => {
+    let _id = req.body._id;
 
-    //Este id es el id que ha venido por parámetro en el endpoint (url)
-    let _id = req.params._id;
-    let serie = req.serie.serie[0];
+    try {
 
-    //Estos datos de movie son lo que el middleware auth ha decodificado del token ;)
-    if (_id !== serie._id) {
+        await Serie.find({
+            _id: _id
 
-        res.send({ "Msg": "Denied acces" });
-    } else {
+        })
+            .then(foundSeries => {
+                res.send(foundSeries)
+            })
 
-        res.send({
-
-            "id": serie._id,
-            "tittle": serie.tittle,
-            "cast": serie.cast,
-            "year": serie.year,
-            "description": serie.description,
-
-        });
+    } catch (error) {
+        console.log(error);
     }
 }
 

@@ -19,7 +19,7 @@ MoviesController.getAllMovies = async (req, res) => {
     }
 }
 
-MoviesController.getMovieById = async (req, res) => {
+MoviesController.getMovieById = async (req, res) => { 
     let _id = req.body._id;
 
     try {
