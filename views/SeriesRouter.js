@@ -17,11 +17,11 @@ router.delete("/", SeriesController.deleteSerie);
 
 
 //Endpoints with middleware...
-router.get("/profile/rating/:rating", auth, SeriesController.getSerieByRating);
-router.get("/profile/id/:_id", auth, SeriesController.getSerieById);
-router.get("/profile/tittle/:tittle", auth, SeriesController.getSerieByTittle);
-router.get("/profile/weekly/:name", auth, SeriesController.getSerieByWeekly);
-router.get("/profile/cinemas/:name", auth, SeriesController.getSerieByCinemaOrTheater);
+router.get("/profile/rating", auth, SeriesController.getSerieByRating);
+router.get("/profile/id", auth, SeriesController.getSerieById);
+router.get("/profile/tittle", auth, SeriesController.getSerieByTittle);
+router.get("/profile/weekly", auth, SeriesController.getSerieByWeekly);
+router.get("/profile/cinemas", auth, SeriesController.getSerieByCinemaOrTheater);
 
 //Exporto router para que pueda ser importado desde otros ficheros una vez ha ejecutado la lógica de éste(siempre igual)
 module.exports = router;

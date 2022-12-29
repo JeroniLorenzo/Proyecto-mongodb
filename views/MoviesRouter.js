@@ -17,10 +17,10 @@ router.delete("/", MoviesController.deleteMovie);
 
 
 //Endpoints with middleware...
-router.get("/profile/rating/:rating", auth, MoviesController.getMovieByRating);
-router.get("/profile/id/:_id", auth, MoviesController.getMovieById);
-router.get("/profile/tittle/:tittle", auth, MoviesController.getMovieByTittle);
-router.get("/profile/genre/:genre", auth, MoviesController.getMovieByGenre);
+router.get("/profile/rating", auth, MoviesController.getMovieByRating);
+router.get("/profile/id", auth, MoviesController.getMovieById);
+router.get("/profile/tittle", auth, MoviesController.getMovieByTittle);
+router.get("/profile/genre", auth, MoviesController.getMovieByGenre);
 
 
 //Exporto router para que pueda ser importado desde otros ficheros una vez ha ejecutado la lógica de éste(siempre igual)
