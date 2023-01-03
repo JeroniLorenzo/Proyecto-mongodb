@@ -5,15 +5,16 @@ const router = express.Router();
 
 //Importo el middleware de auth...
 const auth = require('../middlewares/auth');
+// const isAdmin = require('../middlewares/isAdmin');
 
 const SeriesController = require('../controllers/SeriesControllers');
 
 //Endpoints
 
-router.get("/", SeriesController.getAllSeries);
-router.post("/", SeriesController.newSerie);
-router.put("/", SeriesController.updateSerie);
-router.delete("/", SeriesController.deleteSerie);
+router.get("/getAll", SeriesController.getAllSeries);
+router.post("/newSerie", SeriesController.newSerie);
+router.put("/updateSerie", SeriesController.updateSerie);
+router.delete("/deleteSerie", SeriesController.deleteSerie);
 
 
 //Endpoints with middleware...

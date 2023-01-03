@@ -28,7 +28,7 @@ const seriesSchema = new Schema ({
     next7DaysEpisode: {
         type: String
     },
-    CinemaOrTheaters:{
+    cinemaOrTheaters:{
         Type: String
     }
 

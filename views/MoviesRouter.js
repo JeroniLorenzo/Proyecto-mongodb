@@ -10,10 +10,10 @@ const MoviesController = require('../controllers/MoviesControllers');
 
 //Endpoints
 
-router.get("/", MoviesController.getAllMovies);
-router.post("/", MoviesController.newMovie);
-router.put("/", MoviesController.updateMovie);
-router.delete("/", MoviesController.deleteMovie);
+router.get("/getAll", MoviesController.getAllMovies);
+router.post("/newMovie", MoviesController.newMovie);
+router.put("/updateMovie", MoviesController.updateMovie);
+router.delete("/deleteMovie", MoviesController.deleteMovie);
 
 
 //Endpoints with middleware...

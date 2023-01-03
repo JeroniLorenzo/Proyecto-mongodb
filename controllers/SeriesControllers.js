@@ -6,10 +6,10 @@ SeriesController.getAllSeries = async (req, res) => {
 
     try {
 
-        let result = await Serie.find({});
+        let foundSeries = await Serie.find({});
 
-        if (result.length > 0) {
-            res.send(result)
+        if (foundSeries.length > 0) {
+            res.send(foundSeries)
         } else {
             res.send({ "Message": "Sorry, we didn't find any serie." })
         }
@@ -20,17 +20,15 @@ SeriesController.getAllSeries = async (req, res) => {
 }
 
 SeriesController.getSerieById = async (req, res) => {
-    let _id = req.body._id;
+    const _id = req.body._id;
 
     try {
-
-        await Serie.find({
-            _id: _id
-
-        })
-            .then(foundSeries => {
-                res.send(foundSeries)
-            })
+        const foundSeries = await Serie.find({_id: _id})
+        // if(_id != foundSeries){
+            // res.status(404);
+            // res.json({error: 'incorrect id'})
+        // }
+        res.send(foundSeries)
 
     } catch (error) {
         console.log(error);
@@ -39,16 +37,15 @@ SeriesController.getSerieById = async (req, res) => {
 
 SeriesController.getSerieByTittle = async (req, res) => {
 
-    let tittle = req.body.tittle;
+    const tittle = req.body.tittle;
 
     try {
-
-        await Serie.find({
-            tittle: tittle
-        })
-            .then(foundSeries => {
-                res.send(foundSeries)
-            })
+        const foundSeries = await Serie.find({tittle: tittle})
+        //  if(foundSeries === tittle){
+        //      res.status(404);
+        //      res.json({error: 'incorrect tittle'})
+        //  }
+        res.send(foundSeries)
 
     } catch (error) {
         console.log(error);
@@ -57,16 +54,15 @@ SeriesController.getSerieByTittle = async (req, res) => {
 
 SeriesController.getSerieByRating = async (req, res) => {
 
-    let rating = req.body.rating;
+    const rating = req.body.rating;
 
     try {
-
-        await Serie.find({
-            rating: rating
-        })
-            .then(foundSeries => {
-                res.send(foundSeries)
-            })
+        const foundSeries = await Serie.find({rating: rating})
+         if(rating != 5){
+             res.status(404);
+             res.json({error: 'This serie is not a top rated serie'})
+         }
+        res.send(foundSeries)
 
     } catch (error) {
         console.log(error);
@@ -75,36 +71,32 @@ SeriesController.getSerieByRating = async (req, res) => {
 
 SeriesController.getSerieByWeekly = async (req, res) => {
 
-    let weekly = req.body.weekly;
-    
-        try {
+    const next7DaysEpisode = req.body.next7DaysEpisode;
 
-        await Serie.find({
-            weekly: weekly
-        })
-            .then(foundSeries => {
-                res.send(foundSeries)
-            })
+    try {
+        const foundSeries = await Serie.find({next7DaysEpisode: next7DaysEpisode})
+        if(next7DaysEpisode != "yes"  ){
+            res.status(404);
+            res.json({error: "This serie doesn't have a weekly episode"})
+        }
+        res.send(foundSeries)
 
     } catch (error) {
         console.log(error);
     }
-    
-    
 }
 
 SeriesController.getSerieByGenre = async (req, res) => {
 
-    let genre = req.body.genre;
+    const genre = req.body.genre;
 
     try {
-
-        await Serie.find({
-            genre: genre
-        })
-            .then(foundSeries => {
-                res.send(foundSeries)
-            })
+        const foundSeries = await Serie.find({genre: genre})
+         if(genre == foundSeries){
+             res.status(404);
+             res.json({error: 'This genre is not in our basa date'})
+         }
+        res.send(foundSeries)
 
     } catch (error) {
         console.log(error);
@@ -113,16 +105,15 @@ SeriesController.getSerieByGenre = async (req, res) => {
 
 SeriesController.getSerieByCinemaOrTheater = async (req, res) => {
 
-    let cinemaOrTheater = req.body.cinemaOrTheater;
+    const cinemaOrTheaters = req.body.cinemaOrTheaters;
 
     try {
-
-        await Serie.find({
-            cinemaOrTheater: cinemaOrTheater
-        })
-            .then(foundSeries => {
-                res.send(foundSeries)
-            })
+        const foundSeries = await Serie.find({cinemaOrTheaters: cinemaOrTheaters})
+        if(cinemaOrTheaters != "yes"  ){
+            res.status(404);
+            res.json({error: "This serie doesn't has a Cinema or Theater pass"})
+        }
+        res.send(foundSeries)
 
     } catch (error) {
         console.log(error);
@@ -162,6 +153,7 @@ SeriesController.updateSerie = async (req, res) => {
     let newGenre = req.body.genre;
     let newYear = req.body.year;
     let newRating = req.body.rating;
+    let newDescription = req.body.description;
     let newNext7Days = req.body.next7Days;
     let newCinemaOrTheaters = req.body.cinemaOrTheater;
 
@@ -176,6 +168,7 @@ SeriesController.updateSerie = async (req, res) => {
                 genre: newGenre,
                 year: newYear,
                 rating: newRating,
+                description: newDescription,
                 next7Days: newNext7Days,
                 cinemaOrTheaters: newCinemaOrTheaters
             }).setOptions({ returnDocument: 'after' })

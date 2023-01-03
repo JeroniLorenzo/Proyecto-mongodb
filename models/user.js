@@ -25,6 +25,9 @@ const userSchema = new Schema ({
     },
     rol: {
         type: String
+    },
+    nickname:{
+        type: String
     }
 
 });
