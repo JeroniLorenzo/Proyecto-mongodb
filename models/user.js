@@ -22,8 +22,10 @@ const userSchema = new Schema ({
     },
     phone: {
         type: Number
-
     },
+    rol: {
+        type: String
+    }
 
 });
 

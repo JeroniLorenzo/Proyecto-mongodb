@@ -15,21 +15,21 @@ const seriesSchema = new Schema ({
     },
     year : {
         type: Number,
-        required: true,
+        
     },
     rating : {
         type: Number,
-        required: true
+        
     },
     description: {
         type: String
 
     },
     next7DaysEpisode: {
-        type: Boolean
+        type: String
     },
     CinemaOrTheaters:{
-        Type: Boolean
+        Type: String
     }
 
 });

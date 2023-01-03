@@ -15,11 +15,11 @@ const moviesSchema = new Schema ({
     },
     year : {
         type: Number,
-        required: true,
+        
     },
     rating : {
         type: Number,
-        required: true
+        
     },
     description: {
         type: String

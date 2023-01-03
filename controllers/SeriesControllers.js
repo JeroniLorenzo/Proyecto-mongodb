@@ -76,11 +76,31 @@ SeriesController.getSerieByRating = async (req, res) => {
 SeriesController.getSerieByWeekly = async (req, res) => {
 
     let weekly = req.body.weekly;
+    
+        try {
+
+        await Serie.find({
+            weekly: weekly
+        })
+            .then(foundSeries => {
+                res.send(foundSeries)
+            })
+
+    } catch (error) {
+        console.log(error);
+    }
+    
+    
+}
+
+SeriesController.getSerieByGenre = async (req, res) => {
+
+    let genre = req.body.genre;
 
     try {
 
         await Serie.find({
-            weekly: weekly
+            genre: genre
         })
             .then(foundSeries => {
                 res.send(foundSeries)
@@ -119,11 +139,13 @@ SeriesController.newSerie = async (req, res) => {
             genre: req.body.genre,
             year: req.body.year,
             rating: req.body.rating,
-            description: req.body.description
+            description: req.body.description,
+            next7DaysEpisode: req.body.next7DaysEpisode,
+            cinemaOrTheater: req.body.cinemaOrTheater
         })
 
         if (serie) {
-            res.send({ "Message": `Serie: ${serie.name} has been added successfuly` })
+            res.send({ "Message": `Serie: ${serie.tittle} has been added successfuly` })
         }
 
     } catch (error) {

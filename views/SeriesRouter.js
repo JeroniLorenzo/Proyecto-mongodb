@@ -20,6 +20,7 @@ router.delete("/", SeriesController.deleteSerie);
 router.get("/profile/rating", auth, SeriesController.getSerieByRating);
 router.get("/profile/id", auth, SeriesController.getSerieById);
 router.get("/profile/tittle", auth, SeriesController.getSerieByTittle);
+router.get("/profile/genre", auth, SeriesController.getSerieByGenre);
 router.get("/profile/weekly", auth, SeriesController.getSerieByWeekly);
 router.get("/profile/cinemas", auth, SeriesController.getSerieByCinemaOrTheater);
 
