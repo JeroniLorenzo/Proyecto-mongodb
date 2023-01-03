@@ -5,6 +5,7 @@ const router = express.Router();
 
 //Importo el middleware de auth...
 const auth = require('../middlewares/auth');
+// const isAdmin = require('../middlewares/isAdmin');
 
 const MoviesController = require('../controllers/MoviesControllers');
 
