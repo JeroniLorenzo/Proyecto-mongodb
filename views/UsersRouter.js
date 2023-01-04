@@ -11,8 +11,6 @@ const UsersController = require('../controllers/UsersController');
 //Endpoints
 
 router.post("/login", UsersController.loginUser);
-
-//Endpoints with middleware...
 router.post("/newUser", UsersController.newUser);
 router.get("/getAll", UsersController.getAllUsers);
 router.put("/updateUser", UsersController.updateUser);

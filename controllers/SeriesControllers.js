@@ -17,7 +17,7 @@ SeriesController.getAllSeries = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 SeriesController.getSerieById = async (req, res) => {
     const _id = req.body._id;
@@ -33,7 +33,7 @@ SeriesController.getSerieById = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 SeriesController.getSerieByTittle = async (req, res) => {
 
@@ -50,7 +50,7 @@ SeriesController.getSerieByTittle = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 SeriesController.getSerieByRating = async (req, res) => {
 
@@ -67,7 +67,7 @@ SeriesController.getSerieByRating = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 SeriesController.getSerieByWeekly = async (req, res) => {
 
@@ -84,7 +84,7 @@ SeriesController.getSerieByWeekly = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 SeriesController.getSerieByGenre = async (req, res) => {
     const genre = req.body.genre;
@@ -100,7 +100,25 @@ SeriesController.getSerieByGenre = async (req, res) => {
     } catch (error) {
       console.log(error);
     }
-  }
+};
+
+SeriesController.getSerieByYear = async (req, res) => {
+
+    const year = req.body.year;
+
+    try {
+        const foundSeries = await Serie.find ({year: year})
+        if(!foundSeries.length){
+            res.status(404);
+            res.json({error: "Any Serie founded with this year"})
+        }
+        res.send(foundSeries)
+            
+
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 SeriesController.getSerieByCinemaOrTheater = async (req, res) => {
 
@@ -117,7 +135,7 @@ SeriesController.getSerieByCinemaOrTheater = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 SeriesController.newSerie = async (req, res) => {
 

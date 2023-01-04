@@ -24,6 +24,6 @@ router.get("/profile/tittle", auth, SeriesController.getSerieByTittle);
 router.get("/profile/genre", auth, SeriesController.getSerieByGenre);
 router.get("/profile/weekly", auth, SeriesController.getSerieByWeekly);
 router.get("/profile/cinemas", auth, SeriesController.getSerieByCinemaOrTheater);
-
+router.get("/profile/year", auth, SeriesController.getSerieByYear)
 //Exporto router para que pueda ser importado desde otros ficheros una vez ha ejecutado la lógica de éste(siempre igual)
 module.exports = router;
