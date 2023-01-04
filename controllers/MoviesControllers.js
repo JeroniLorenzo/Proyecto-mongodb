@@ -41,11 +41,10 @@ MoviesController.getMovieByTittle = async (req, res) => {
 
     try {
         const foundMovies = await Movie.find ({tittle: tittle})
-        // if(tittle != foundMovies){
-        //     res.status(404);
-        //     res.json({error: "incorrect tittle"})
+        //  if(foundMovies != tittle){
+        //      res.status(404);
+        //      res.json({error: "incorrect tittle"})
         // }
-       
         res.send(foundMovies);
 
     } catch (error) {
@@ -59,9 +58,10 @@ MoviesController.getMovieByGenre = async (req, res) => {
 
     try {
         const foundMovies = await Movie.find({genre: genre})
-        if(genre =! foundMovies){
-            
-        }
+        // if(genre != foundMovies){
+        //     res.status(404);
+        //      res.json({error: "incorrect genre"})
+        // }
             
         res.send(foundMovies)
 
@@ -72,16 +72,16 @@ MoviesController.getMovieByGenre = async (req, res) => {
 
 MoviesController.getMovieByRating = async (req, res) => {
 
-    let rating = req.body.rating;
+    const rating = req.body.rating;
 
     try {
-
-        await Movie.find({
-            rating: rating
-        })
-            .then(foundMovies => {
-                res.send(foundMovies)
-            })
+        const foundMovies = await Movie.find ({rating: rating})
+        if(rating != 5){
+            res.status(404);
+            res.json({error: "This movie is not a top rated"})
+        }
+        res.send(foundMovies)
+            
 
     } catch (error) {
         console.log(error);

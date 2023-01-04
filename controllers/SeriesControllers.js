@@ -87,21 +87,19 @@ SeriesController.getSerieByWeekly = async (req, res) => {
 }
 
 SeriesController.getSerieByGenre = async (req, res) => {
-
     const genre = req.body.genre;
-
+  
     try {
-        const foundSeries = await Serie.find({genre: genre})
-         if(genre == foundSeries){
-             res.status(404);
-             res.json({error: 'This genre is not in our basa date'})
-         }
-        res.send(foundSeries)
-
+      const foundSeries = await Serie.find({genre: genre});
+       if (foundSeries == genre) {
+        res.status(404);
+        res.json({error: 'This genre is not in our basa date'});
+      }
+      res.send(foundSeries);
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-}
+  };
 
 SeriesController.getSerieByCinemaOrTheater = async (req, res) => {
 
