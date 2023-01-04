@@ -47,7 +47,7 @@ MoviesController.getMovieByTittle = async (req, res) => {
         // }
        
         res.send(foundMovies);
-        
+
     } catch (error) {
         console.log(error);
     }
@@ -55,17 +55,15 @@ MoviesController.getMovieByTittle = async (req, res) => {
 
 MoviesController.getMovieByGenre = async (req, res) => {
 
-    let genre = req.body.genre;
+    const genre = req.body.genre;
 
     try {
-
-        await Movie.find({
-            genre: genre
-
-        })
-            .then(foundMovies => {
-                res.send(foundMovies)
-            })
+        const foundMovies = await Movie.find({genre: genre})
+        if(genre =! foundMovies){
+            
+        }
+            
+        res.send(foundMovies)
 
     } catch (error) {
         console.log(error);
