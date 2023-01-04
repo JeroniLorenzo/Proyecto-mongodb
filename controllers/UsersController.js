@@ -51,16 +51,17 @@ UsersController.getUserById = async (req, res) => {
 
 UsersController.getUsersByName = async (req, res) => {
 
-    let name = req.body.name;
+    const name = req.body.name;
 
     try {
 
-        await User.find({
-            name: name
-        })
-            .then(foundUsers => {
-                res.send(foundUsers)
-            })
+        const foundUsers = await User.find ({name: name})
+
+        //  if(foundUsers === name){
+        //      res.status(404);
+        //      res.json({error: 'incorrect name'})
+        //  }
+        res.send(foundUsers)
 
     } catch (error) {
         console.log(error);

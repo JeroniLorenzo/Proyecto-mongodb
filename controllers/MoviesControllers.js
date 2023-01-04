@@ -20,17 +20,15 @@ MoviesController.getAllMovies = async (req, res) => {
 }
 
 MoviesController.getMovieById = async (req, res) => { 
-    let _id = req.body._id;
+    const _id = req.body._id;
 
     try {
-
-        await Movie.find({
-            _id: _id
-
-        })
-            .then(foundMovies => {
-                res.send(foundMovies)
-            })
+        const foundMovies = await Movie.find({_id: _id})
+        // if(_id != foundMovies){
+            // res.status(404);
+            // res.json({error: 'incorrect id'})
+        // }
+        res.send(foundMovies)
 
     } catch (error) {
         console.log(error);
@@ -39,17 +37,17 @@ MoviesController.getMovieById = async (req, res) => {
 
 MoviesController.getMovieByTittle = async (req, res) => {
 
-    let tittle = req.body.tittle;
+    const tittle = req.body.tittle;
 
     try {
-
-        await Movie.find({
-            tittle: tittle
-        })
-            .then(foundMovies => {
-                res.send(foundMovies)
-            })
-
+        const foundMovies = await Movie.find ({tittle: tittle})
+        // if(tittle != foundMovies){
+        //     res.status(404);
+        //     res.json({error: "incorrect tittle"})
+        // }
+       
+        res.send(foundMovies);
+        
     } catch (error) {
         console.log(error);
     }
