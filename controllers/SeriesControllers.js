@@ -105,11 +105,11 @@ SeriesController.getSerieByGenre = async (req, res) => {
 
 SeriesController.getSerieByCinemaOrTheater = async (req, res) => {
 
-    const cinemaOrTheaters = req.body.cinemaOrTheaters;
+    const cinemaOrTheater = req.body.cinemaOrTheater;
 
     try {
-        const foundSeries = await Serie.find({cinemaOrTheaters: cinemaOrTheaters})
-        if(cinemaOrTheaters != "yes"  ){
+        const foundSeries = await Serie.find({cinemaOrTheater: cinemaOrTheater})
+        if(cinemaOrTheater != "yes"  ){
             res.status(404);
             res.json({error: "This serie doesn't has a Cinema or Theater pass"})
         }
@@ -155,7 +155,7 @@ SeriesController.updateSerie = async (req, res) => {
     let newRating = req.body.rating;
     let newDescription = req.body.description;
     let newNext7Days = req.body.next7Days;
-    let newCinemaOrTheaters = req.body.cinemaOrTheater;
+    let newCinemaOrTheater = req.body.cinemaOrTheater;
 
     try {
         let updated = await Serie.findOneAndUpdate(
@@ -170,12 +170,12 @@ SeriesController.updateSerie = async (req, res) => {
                 rating: newRating,
                 description: newDescription,
                 next7Days: newNext7Days,
-                cinemaOrTheaters: newCinemaOrTheaters
+                cinemaOrTheater: newCinemaOrTheater
             }).setOptions({ returnDocument: 'after' })
         //con setOptions en este caso voy a exigir que me devuelva el documento modificado
 
         if (updated) {
-            res.send(`The serie has been update successfuly`)
+            res.send(`The serie ${updated.tittle} has been update successfuly`)
         }
     } catch (error) {
         console.log("Error updating serie data", error);
@@ -191,7 +191,7 @@ SeriesController.deleteSerie = async (req, res) => {
         })
 
         if (deleted) {
-            res.send({ "Message": `The serie: ${deleted.name} ${deleted.surname} has been successfuly deleted` })
+            res.send({ "Message": `The serie: ${deleted.tittle} has been successfuly deleted` })
         }
     } catch (error) {
         console.log("Error deleting serie", error);
