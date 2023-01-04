@@ -22,7 +22,7 @@ router.get("/profile/rating", auth, MoviesController.getMovieByRating);
 router.get("/profile/id", auth, MoviesController.getMovieById);
 router.get("/profile/tittle", auth, MoviesController.getMovieByTittle);
 router.get("/profile/genre", auth, MoviesController.getMovieByGenre);
-
+router.get("/profile/year", auth, MoviesController.getMovieByYear)
 
 //Exporto router para que pueda ser importado desde otros ficheros una vez ha ejecutado la lógica de éste(siempre igual)
 module.exports = router;

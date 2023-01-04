@@ -17,23 +17,23 @@ MoviesController.getAllMovies = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 MoviesController.getMovieById = async (req, res) => { 
     const _id = req.body._id;
 
     try {
         const foundMovies = await Movie.find({_id: _id})
-        // if(_id != foundMovies){
-            // res.status(404);
-            // res.json({error: 'incorrect id'})
-        // }
+         if(!foundMovies.length){
+             res.status(404);
+             res.json({error: 'incorrect id'})
+         }
         res.send(foundMovies)
 
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 MoviesController.getMovieByTittle = async (req, res) => {
 
@@ -41,16 +41,16 @@ MoviesController.getMovieByTittle = async (req, res) => {
 
     try {
         const foundMovies = await Movie.find ({tittle: tittle})
-        //  if(foundMovies != tittle){
-        //      res.status(404);
-        //      res.json({error: "incorrect tittle"})
-        // }
+           if(!foundMovies.length){
+               res.status(404);
+               res.json({error: "incorrect tittle"})
+          }
         res.send(foundMovies);
 
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 MoviesController.getMovieByGenre = async (req, res) => {
 
@@ -58,17 +58,17 @@ MoviesController.getMovieByGenre = async (req, res) => {
 
     try {
         const foundMovies = await Movie.find({genre: genre})
-        // if(genre != foundMovies){
-        //     res.status(404);
-        //      res.json({error: "incorrect genre"})
-        // }
+         if(!foundMovies.length){
+             res.status(404);
+              res.json({error: "incorrect genre"})
+         }
             
         res.send(foundMovies)
 
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 MoviesController.getMovieByRating = async (req, res) => {
 
@@ -86,7 +86,25 @@ MoviesController.getMovieByRating = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
+
+MoviesController.getMovieByYear = async (req, res) => {
+
+    const year = req.body.year;
+
+    try {
+        const foundMovies = await Movie.find ({year: year})
+        if(!foundMovies.length){
+            res.status(404);
+            res.json({error: "Any movie founded with this year"})
+        }
+        res.send(foundMovies)
+            
+
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 MoviesController.newMovie = async (req, res) => {
 
@@ -137,12 +155,12 @@ MoviesController.updateMovie = async (req, res) => {
         //con setOptions en este caso voy a exigir que me devuelva el documento modificado
 
         if (updated) {
-            res.send(`Movie has been update successfuly`)
+            res.send(`Movie has been updated successfuly`)
         }
     } catch (error) {
         console.log("Error updating movie data", error);
     }
-}
+};
 
 MoviesController.deleteMovie = async (req, res) => {
     let _id = req.body._id;

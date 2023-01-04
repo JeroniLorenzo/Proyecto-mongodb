@@ -24,10 +24,10 @@ SeriesController.getSerieById = async (req, res) => {
 
     try {
         const foundSeries = await Serie.find({_id: _id})
-        // if(_id != foundSeries){
-            // res.status(404);
-            // res.json({error: 'incorrect id'})
-        // }
+         if(!foundSeries.length){
+             res.status(404);
+             res.json({error: 'incorrect id'})
+         }
         res.send(foundSeries)
 
     } catch (error) {
@@ -41,10 +41,10 @@ SeriesController.getSerieByTittle = async (req, res) => {
 
     try {
         const foundSeries = await Serie.find({tittle: tittle})
-        //  if(foundSeries === tittle){
-        //      res.status(404);
-        //      res.json({error: 'incorrect tittle'})
-        //  }
+          if(!foundSeries.length){
+              res.status(404);
+              res.json({error: 'incorrect tittle'})
+          }
         res.send(foundSeries)
 
     } catch (error) {
@@ -88,18 +88,19 @@ SeriesController.getSerieByWeekly = async (req, res) => {
 
 SeriesController.getSerieByGenre = async (req, res) => {
     const genre = req.body.genre;
-  
+    
     try {
       const foundSeries = await Serie.find({genre: genre});
-       if (foundSeries == genre) {
+      if(!foundSeries.length){
         res.status(404);
         res.json({error: 'This genre is not in our basa date'});
+        return;
       }
       res.send(foundSeries);
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 
 SeriesController.getSerieByCinemaOrTheater = async (req, res) => {
 
