@@ -19,7 +19,7 @@ MoviesController.getAllMovies = async (req, res) => {
     }
 };
 
-MoviesController.getMovieById = async (req, res) => { 
+MoviesController.postMovieById = async (req, res) => { 
     const _id = req.body._id;
 
     try {
@@ -35,7 +35,7 @@ MoviesController.getMovieById = async (req, res) => {
     }
 };
 
-MoviesController.getMovieByTittle = async (req, res) => {
+MoviesController.postMovieByTittle = async (req, res) => {
 
     const tittle = req.body.tittle;
 
@@ -52,7 +52,7 @@ MoviesController.getMovieByTittle = async (req, res) => {
     }
 };
 
-MoviesController.getMovieByGenre = async (req, res) => {
+MoviesController.postMovieByGenre = async (req, res) => {
 
     const genre = req.body.genre;
 
@@ -70,7 +70,7 @@ MoviesController.getMovieByGenre = async (req, res) => {
     }
 };
 
-MoviesController.getMovieByRating = async (req, res) => {
+MoviesController.postMovieByRating = async (req, res) => {
 
     const rating = req.body.rating;
 
@@ -88,7 +88,7 @@ MoviesController.getMovieByRating = async (req, res) => {
     }
 };
 
-MoviesController.getMovieByYear = async (req, res) => {
+MoviesController.postMovieByYear = async (req, res) => {
 
     const year = req.body.year;
 
@@ -155,7 +155,7 @@ MoviesController.updateMovie = async (req, res) => {
         //con setOptions en este caso voy a exigir que me devuelva el documento modificado
 
         if (updated) {
-            res.send(`Movie has been updated successfuly`)
+            res.send(`The Movie: ${newTittle} has been updated successfuly`)
         }
     } catch (error) {
         console.log("Error updating movie data", error);

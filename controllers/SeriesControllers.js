@@ -19,7 +19,7 @@ SeriesController.getAllSeries = async (req, res) => {
     }
 };
 
-SeriesController.getSerieById = async (req, res) => {
+SeriesController.postSerieById = async (req, res) => {
     const _id = req.body._id;
 
     try {
@@ -35,7 +35,7 @@ SeriesController.getSerieById = async (req, res) => {
     }
 };
 
-SeriesController.getSerieByTittle = async (req, res) => {
+SeriesController.postSerieByTittle = async (req, res) => {
 
     const tittle = req.body.tittle;
 
@@ -52,7 +52,7 @@ SeriesController.getSerieByTittle = async (req, res) => {
     }
 };
 
-SeriesController.getSerieByRating = async (req, res) => {
+SeriesController.postSerieByRating = async (req, res) => {
 
     const rating = req.body.rating;
 
@@ -69,7 +69,7 @@ SeriesController.getSerieByRating = async (req, res) => {
     }
 };
 
-SeriesController.getSerieByWeekly = async (req, res) => {
+SeriesController.postSerieByWeekly = async (req, res) => {
 
     const next7DaysEpisode = req.body.next7DaysEpisode;
 
@@ -86,7 +86,7 @@ SeriesController.getSerieByWeekly = async (req, res) => {
     }
 };
 
-SeriesController.getSerieByGenre = async (req, res) => {
+SeriesController.postSerieByGenre = async (req, res) => {
     const genre = req.body.genre;
     
     try {
@@ -102,7 +102,7 @@ SeriesController.getSerieByGenre = async (req, res) => {
     }
 };
 
-SeriesController.getSerieByYear = async (req, res) => {
+SeriesController.postSerieByYear = async (req, res) => {
 
     const year = req.body.year;
 
@@ -120,7 +120,7 @@ SeriesController.getSerieByYear = async (req, res) => {
     }
 };
 
-SeriesController.getSerieByCinemaOrTheater = async (req, res) => {
+SeriesController.postSerieByCinemaOrTheater = async (req, res) => {
 
     const cinemaOrTheater = req.body.cinemaOrTheater;
 

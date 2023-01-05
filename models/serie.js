@@ -11,7 +11,7 @@ const seriesSchema = new Schema ({
         type: String
     },
     genre:{
-        type: String
+        type: Array
     },
     year : {
         type: Number,
