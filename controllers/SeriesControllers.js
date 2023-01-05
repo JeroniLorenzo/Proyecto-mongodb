@@ -45,10 +45,24 @@ SeriesController.postSerieByTittle = async (req, res) => {
               res.status(404);
               res.json({error: 'incorrect tittle'})
           }
-        res.send(foundSeries)
+        res.send(foundSeries);
 
     } catch (error) {
         console.log(error);
+    }
+};
+
+SeriesController.postSerieByDirector = async (req, res) => {
+    const director = req.body.director
+    try {
+        const foundSeries = await Serie.find ({director: director})
+            if(!foundSeries.length){
+                res.status(404);
+                res.json({error: "Any director with this name in our data base"})
+          }
+        res.send(foundSeries)
+    } catch (error) {
+        console.log(error)
     }
 };
 
@@ -144,10 +158,11 @@ SeriesController.newSerie = async (req, res) => {
         let serie = await Serie.create({
             tittle: req.body.tittle,
             cast: req.body.cast,
+            director: req.body.director,
+            description: req.body.description,
             genre: req.body.genre,
             year: req.body.year,
             rating: req.body.rating,
-            description: req.body.description,
             next7DaysEpisode: req.body.next7DaysEpisode,
             cinemaOrTheater: req.body.cinemaOrTheater
         })
@@ -167,10 +182,12 @@ SeriesController.updateSerie = async (req, res) => {
     let _id = req.body._id;
     let newTittle = req.body.tittle;
     let newCast = req.body.cast;
+    let newDirector = req.body.director;
+    let newDescription = req.body.description;
     let newGenre = req.body.genre;
     let newYear = req.body.year;
     let newRating = req.body.rating;
-    let newDescription = req.body.description;
+    
     let newNext7Days = req.body.next7Days;
     let newCinemaOrTheater = req.body.cinemaOrTheater;
 
@@ -182,10 +199,12 @@ SeriesController.updateSerie = async (req, res) => {
             {
                 tittle: newTittle,
                 cast: newCast,
+                director: newDirector,
+                description: newDescription,
                 genre: newGenre,
                 year: newYear,
                 rating: newRating,
-                description: newDescription,
+                
                 next7Days: newNext7Days,
                 cinemaOrTheater: newCinemaOrTheater
             }).setOptions({ returnDocument: 'after' })

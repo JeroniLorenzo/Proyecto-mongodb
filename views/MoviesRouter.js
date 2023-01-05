@@ -21,6 +21,7 @@ router.delete("/deleteMovie", MoviesController.deleteMovie);
 router.post("/rating", auth, MoviesController.postMovieByRating);
 router.post("/id", auth, MoviesController.postMovieById);
 router.post("/tittle", auth, MoviesController.postMovieByTittle);
+router.post("/director", auth, MoviesController.postMovieByDirector);
 router.post("/genre", auth, MoviesController.postMovieByGenre);
 router.post("/year", auth, MoviesController.postMovieByYear)
 

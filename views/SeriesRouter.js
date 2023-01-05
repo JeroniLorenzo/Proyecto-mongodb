@@ -21,6 +21,7 @@ router.delete("/deleteSerie", SeriesController.deleteSerie);
 router.post("/rating", auth, SeriesController.postSerieByRating);
 router.post("/id", auth, SeriesController.postSerieById);
 router.post("/tittle", auth, SeriesController.postSerieByTittle);
+router.post("/director", auth, SeriesController.postSerieByDirector);
 router.post("/genre", auth, SeriesController.postSerieByGenre);
 router.post("/weekly", auth, SeriesController.postSerieByWeekly);
 router.post("/cinemas", auth, SeriesController.postSerieByCinemaOrTheater);

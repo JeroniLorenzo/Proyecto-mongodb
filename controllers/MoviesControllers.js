@@ -52,6 +52,21 @@ MoviesController.postMovieByTittle = async (req, res) => {
     }
 };
 
+MoviesController.postMovieByDirector = async (req, res)=> {
+    const director = req.body.director
+    try {
+        const foundMovies = await Movie.find ({director: director})
+            if(!foundMovies.length){
+                res.status(404);
+                res.json({error: "Any director with this name in our data base"})
+          }
+        res.send(foundMovies)
+    } catch (error) {
+        console.log(error)
+    }
+    
+};
+
 MoviesController.postMovieByGenre = async (req, res) => {
 
     const genre = req.body.genre;
@@ -113,10 +128,12 @@ MoviesController.newMovie = async (req, res) => {
         let movie = await Movie.create({
             tittle: req.body.tittle,
             cast: req.body.cast,
+            director: req.body.director, 
+            description: req.body.description,
             genre: req.body.genre,
             year: req.body.year,
             rating: req.body.rating,
-            description: req.body.description
+            
         })
 
         if (movie) {
@@ -134,10 +151,12 @@ MoviesController.updateMovie = async (req, res) => {
     let _id = req.body._id;
     let newTittle = req.body.tittle;
     let newCast = req.body.cast;
+    let newDirector = req.body.director;
+    let newDescription = req.body.description;
     let newGenre = req.body.genre;
     let newYear = req.body.year;
     let newRating = req.body.rating;
-    let newDescription = req.body.description;
+    
 
     try {
         let updated = await Movie.findOneAndUpdate(
@@ -147,10 +166,12 @@ MoviesController.updateMovie = async (req, res) => {
             {
                 tittle: newTittle,
                 cast: newCast,
+                director: newDirector,
+                description: newDescription,
                 genre: newGenre,
                 year: newYear,
                 rating: newRating,
-                description: newDescription
+                
             }).setOptions({ returnDocument: 'after' })
         //con setOptions en este caso voy a exigir que me devuelva el documento modificado
 

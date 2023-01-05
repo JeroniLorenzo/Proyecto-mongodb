@@ -10,6 +10,13 @@ const moviesSchema = new Schema ({
     cast: {
         type: String
     },
+    director: {
+        type: String
+    },
+    description: {
+        type: String
+
+    },
     genre:{
         type: Array
     },
@@ -21,10 +28,7 @@ const moviesSchema = new Schema ({
         type: Number,
         
     },
-    description: {
-        type: String
-
-    },
+    
 
 });
 

@@ -10,6 +10,13 @@ const seriesSchema = new Schema ({
     cast: {
         type: String
     },
+    director: {
+        type: String
+    },
+    description: {
+        type: String
+
+    },
     genre:{
         type: Array
     },
@@ -21,10 +28,7 @@ const seriesSchema = new Schema ({
         type: Number,
         
     },
-    description: {
-        type: String
-
-    },
+    
     next7DaysEpisode: {
         type: String
     },
