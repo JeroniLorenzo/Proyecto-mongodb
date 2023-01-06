@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
 const authConfig = require('../config/auth');
 
@@ -26,37 +27,18 @@ UsersController.getAllUsers = async (req, res) => {
 UsersController.postUserById = async (req, res) => {
     const _id = req.body._id;
 
-    try {
-        const foundUsers = await User.find({_id: _id})
-         if(!foundUsers.length){
-             res.status(404);
-             res.json({error: 'incorrect id'})
-         }
-        res.send(foundUsers)
-
-    } catch (error) {
-        console.log(error);
-    }
+if (!mongoose.Types.ObjectId.isValid(_id)) {
+  res.status(400);
+  res.json({error: 'invalid id'});
+  return;
+}
+try {
+  const foundUsers = await User.find({_id: _id});
+  res.send(foundUsers);
+} catch (error) {
+  console.log(error);
+}
 };
-
-    // if (_id !== user._id) {
-
-    //     res.send({ "Msg": "Acceso no autorizado" });
-    // } else {
-
-    //     res.send({
-
-    //         "id": user._id,
-    //         "name": user.name,
-    //         "surname": user.surname,
-    //         "email": user.email,
-    //         "phone": user.phone,
-    //         "rol": user.rol,
-    //         "nickname": user.nickname
-
-    //     });
-    // }
-
 
 UsersController.postUsersByName = async (req, res) => {
 

@@ -1,5 +1,5 @@
 const Movie = require('../models/movie');
-
+const mongoose = require('mongoose');
 const MoviesController = {};
 
 MoviesController.getAllMovies = async (req, res) => {
@@ -20,19 +20,20 @@ MoviesController.getAllMovies = async (req, res) => {
 };
 
 MoviesController.postMovieById = async (req, res) => { 
+
     const _id = req.body._id;
 
-    try {
-        const foundMovies = await Movie.find({_id: _id})
-         if(!foundMovies.length){
-             res.status(404);
-             res.json({error: 'incorrect id'})
-         }
-        res.send(foundMovies)
-
-    } catch (error) {
-        console.log(error);
-    }
+if (!mongoose.Types.ObjectId.isValid(_id)) {
+  res.status(400);
+  res.json({error: 'invalid id'});
+  return;
+}
+try {
+  const foundMovies = await Movie.find({_id: _id});
+  res.send(foundMovies);
+} catch (error) {
+  console.log(error);
+}
 };
 
 MoviesController.postMovieByTittle = async (req, res) => {

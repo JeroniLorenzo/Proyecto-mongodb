@@ -1,5 +1,5 @@
 const Serie = require('../models/serie');
-
+const mongoose = require('mongoose')
 const SeriesController = {};
 
 SeriesController.getAllSeries = async (req, res) => {
@@ -22,17 +22,17 @@ SeriesController.getAllSeries = async (req, res) => {
 SeriesController.postSerieById = async (req, res) => {
     const _id = req.body._id;
 
-    try {
-        const foundSeries = await Serie.find({_id: _id})
-         if(!foundSeries.length){
-             res.status(404);
-             res.json({error: 'incorrect id'})
-         }
-        res.send(foundSeries)
-
-    } catch (error) {
-        console.log(error);
-    }
+if (!mongoose.Types.ObjectId.isValid(_id)) {
+  res.status(400);
+  res.json({error: 'invalid id'});
+  return;
+}
+try {
+  const foundSeries = await Serie.find({_id: _id});
+  res.send(foundSeries);
+} catch (error) {
+  console.log(error);
+}
 };
 
 SeriesController.postSerieByTittle = async (req, res) => {
