@@ -13,6 +13,10 @@
 
 - router.delete("/deleteUser", UsersController.deleteUser); Seguimos con otra ruta: http://localhost:5500/users/deleteUser, esta nos servirá para eliminar usuarios de la base de datos. Por body vamos a pedir el _id del usuario a borrar.
 
+- router.post("/id", UsersController.postUserById); Con esta ruta http://localhost:5500/users/id, vamos a poder buscar a usuarios por su id. El id a buscar se lo vamos a pasar por body en  postman. Y nos va a devolver el usuario con el id que le hemos pasado.
+
+- router.post("/name", UsersController.postUserByName); Con esta ruta http://localhost:5500/users/name, vamos a poder buscar a usuarios por su nombre. El nombre a buscar se lo vamos a pasar por body en  postman. Y nos va a devolver los usuarios con el que le hemos pasado.
+
 - router.post("/login", UsersController.loginUser); Y finalmente con esta ruta http://localhost:5500/users/login, vamos a poder logearnos a la base de datos siempre y cuando ya nos hayamos registrado anteriormente. En el body de postman, vamos a pedir el email y la contraseña del usuario que quiera loggearse.
 
 ## Endpoints de la colección de Movies. 
@@ -61,6 +65,6 @@ router.post("/year", auth, MoviesController.postMovieByYear); Con ésta ruta: ht
 
 - router.post("/weekly", auth, SeriesController.postSerieByWeekly); Con ésta ruta: http://localhost:5500/series/weekly vamos a pedir por body la clave: "next7DaysEpisode con valor: "yes" para que nos devuelva sólo las series que van a tener episodio semanal. SOLO VA A FUNCIONAR SI EL USUARIO ESTÁ LOGEADO.
 
-- router.post("/cinema", auth, SeriesController.postSerieByWeekly); Con ésta ruta: http://localhost:5500/series/weekly vamos a pedir por body la clave: "next7DaysEpisode con valor: "yes" para que nos devuelva sólo las series que van a tener episodio semanal. SOLO VA A FUNCIONAR SI EL USUARIO ESTÁ LOGEADO.
+- router.post("/cinema", auth, SeriesController.postSerieByWeekly); Con ésta ruta: http://localhost:5500/series/cinema vamos a pedir por body la clave: "next7DaysEpisode con valor: "yes" para que nos devuelva sólo las series que van a tener episodio semanal. SOLO VA A FUNCIONAR SI EL USUARIO ESTÁ LOGEADO.
 
 -router.post("/year", auth, SeriesController.postSerieByYear); Con ésta ruta: http://localhost:5500/series/year vamos a pedir por body el año de la serie y nos va a devolver las series que se rodaran en el mismo año. SOLO VA A FUNCIONAR SI EL USUARIO ESTÁ LOGEADO.

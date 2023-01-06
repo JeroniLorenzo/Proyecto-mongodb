@@ -23,33 +23,42 @@ UsersController.getAllUsers = async (req, res) => {
     }
 };
 
-UsersController.getUserById = async (req, res) => {
+UsersController.postUserById = async (req, res) => {
+    const _id = req.body._id;
 
-    //Este id es el id que ha venido por parámetro en el endpoint (url)
-    let _id = req.params._id;
-    let user = req.user.usuario[0];
+    try {
+        const foundUsers = await User.find({_id: _id})
+         if(!foundUsers.length){
+             res.status(404);
+             res.json({error: 'incorrect id'})
+         }
+        res.send(foundUsers)
 
-    //Estos datos de user son lo que el middleware auth ha decodificado del token ;)
-    if (_id !== user._id) {
-
-        res.send({ "Msg": "Acceso no autorizado" });
-    } else {
-
-        res.send({
-
-            "id": user._id,
-            "name": user.name,
-            "surname": user.surname,
-            "email": user.email,
-            "phone": user.phone,
-            "rol": user.rol,
-            "nickname": user.nickname
-
-        });
+    } catch (error) {
+        console.log(error);
     }
 };
 
-UsersController.getUsersByName = async (req, res) => {
+    // if (_id !== user._id) {
+
+    //     res.send({ "Msg": "Acceso no autorizado" });
+    // } else {
+
+    //     res.send({
+
+    //         "id": user._id,
+    //         "name": user.name,
+    //         "surname": user.surname,
+    //         "email": user.email,
+    //         "phone": user.phone,
+    //         "rol": user.rol,
+    //         "nickname": user.nickname
+
+    //     });
+    // }
+
+
+UsersController.postUsersByName = async (req, res) => {
 
     const name = req.body.name;
 
@@ -57,7 +66,7 @@ UsersController.getUsersByName = async (req, res) => {
 
         const foundUsers = await User.find ({name: name})
 
-          if(!foundUsers.lenght){
+          if(!foundUsers.length){
               res.status(404);
               res.json({error: 'incorrect name'})
           }
