@@ -23,7 +23,7 @@ router.post("/id", auth, MoviesController.postMovieById);
 router.post("/tittle", auth, MoviesController.postMovieByTittle);
 router.post("/director", auth, MoviesController.postMovieByDirector);
 router.post("/genre", auth, MoviesController.postMovieByGenre);
-router.post("/year", auth, MoviesController.postMovieByYear)
+router.post("/year", auth, MoviesController.postMovieByYear);
 
 //Exporto router para que pueda ser importado desde otros ficheros una vez ha ejecutado la lógica de éste(siempre igual)
 module.exports = router;
