@@ -10,9 +10,6 @@ const seriesSchema = new Schema ({
     cast: {
         type: String
     },
-    director: {
-        type: String
-    },
     description: {
         type: String
 

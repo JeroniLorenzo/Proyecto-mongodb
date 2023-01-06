@@ -52,20 +52,6 @@ SeriesController.postSerieByTittle = async (req, res) => {
     }
 };
 
-SeriesController.postSerieByDirector = async (req, res) => {
-    const director = req.body.director
-    try {
-        const foundSeries = await Serie.find ({director: director})
-            if(!foundSeries.length){
-                res.status(404);
-                res.json({error: "Any director with this name in our data base"})
-          }
-        res.send(foundSeries)
-    } catch (error) {
-        console.log(error)
-    }
-};
-
 SeriesController.postSerieByRating = async (req, res) => {
 
     const rating = req.body.rating;
