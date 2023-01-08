@@ -23,11 +23,11 @@ MoviesController.postMovieById = async (req, res) => {
 
     const _id = req.body._id;
 
-if (!mongoose.Types.ObjectId.isValid(_id)) {
-  res.status(400);
-  res.json({error: 'invalid id'});
-  return;
-}
+ if (!mongoose.Types.ObjectId.isValid(_id)) {
+   res.status(400);
+   res.json({error: 'invalid id'});
+   return;
+ }
 try {
   const foundMovies = await Movie.find({_id: _id});
   res.send(foundMovies);

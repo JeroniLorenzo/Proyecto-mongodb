@@ -5,9 +5,9 @@
 ### A través de postman hemos de poder hacer CRUD's de las 3 colecciones. Pero solo si un usuario está registrado y logeado podrá acceder a hacer búsquedas específicas en la colección de movies o series.
 
 ## Endpoints de la colección usuarios.
-- router.get("/getAll", UsersController.getAllUsers); Con la ruta de http://localhost:5500/users/getAll accedermos a ver a todos los usuarios registrados. Al ser un get no vamos a pedir nada por body.
+- router.get("/getAll", UsersController.getAllUsers); Con la ruta de http://localhost:5500/users/getAll accederemos a ver a todos los usuarios registrados. Al ser un get no vamos a pedir nada por body.
 
-- router.post("/newUser", UsersController.newUser); Con esta ruta: http://localhost:5500/users/newUser accederemos a poder registrar usuarios en la base de datos. En el body del postman vamos a añadir el Nombre, Apellido, Email, Contraseña, Teléfono, Rol y Nombre de usuario.
+- router.post("/newUser", UsersController.newUser); Con esta ruta: http://localhost:5500/users/newUser accederemos a poder registrar usuarios en la base de datos. En el body del postman vamos a añadir el Nombre, Apellido, Email, Contraseña, Teléfono, Rol y Nombre de usuario. Y ya habremos creado el usuario.
 
 - router.put("/updateUser", UsersController.updateUser); Con esta otra: http://localhost:5500/users/updateUser, al ser un put actualizaremos los datos del usuario creado. Vamos a pedir el -id del usuario y poner los mismos campos que el endpoint anterior para poder actualizarlo.
 
