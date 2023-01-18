@@ -8,6 +8,19 @@ const dbconnect = require("./db/dbconnect");
 
 const router = require('./router')
 
+const cors = require ('cors')
+
+//Configuro cors
+let corsOptions = {
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+};
+
+//Middlewares
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 app.use(router);
