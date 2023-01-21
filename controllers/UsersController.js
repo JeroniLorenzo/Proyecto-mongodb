@@ -165,7 +165,7 @@ UsersController.loginUser = async (req, res) => {
                     let loginOk = `Welcome back ${userFound[0].name}`;
                     res.json({
                         loginOk,
-                        //user: userFound,
+                        user: userFound,
                         token: token
                     })
 

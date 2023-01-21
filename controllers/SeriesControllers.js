@@ -35,20 +35,20 @@ try {
 }
 };
 
-SeriesController.postSerieByTittle = async (req, res) => {
+SeriesController.getSerieByTittle = async (req, res) => {
 
-    const tittle = req.body.tittle;
-
+    const tittle = req.params.tittle;
+    
     try {
-        const foundSeries = await Serie.find({tittle: tittle})
-          if(!foundSeries.length){
-              res.status(404);
-              res.json({error: 'incorrect tittle'})
-          }
-        res.send(foundSeries);
-
+      const foundSeries = await Serie.find({tittle: tittle});
+      if(!foundSeries.length){
+        res.status(404);
+        res.json({error: 'This title is not in our data base'});
+        return;
+      }
+      res.send(foundSeries);
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
 };
 

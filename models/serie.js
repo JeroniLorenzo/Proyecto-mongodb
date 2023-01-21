@@ -15,15 +15,19 @@ const seriesSchema = new Schema ({
 
     },
     genre:{
-        type: Array
+        type: String
     },
     year : {
-        type: Number,
+        type: Number
         
     },
     rating : {
-        type: Number,
+        type: Number
         
+    },
+
+    poster_path:{
+        type: String
     },
     
     next7DaysEpisode: {
