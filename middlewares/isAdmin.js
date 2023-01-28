@@ -1,12 +1,12 @@
-// module.exports =  (req, res, next) => {
-//     console.log(user.rol)
-//     if(req.user && req.user.rol == "admin"){
-//         next();
-//     }else {
-//         res.status(401).send(`Forbidden access`)
-//     }
+ //module.exports =  (req, res, next) => {
+//      console.log(req.user)
+//      if(req.user && req.user.rol == "admin"){
+//          next();
+//      }else {
+//          res.status(401).send(`Forbidden access`)
+//      }
     
-// };
+//  };
 
 
 
@@ -31,7 +31,7 @@
               res.send(`Forbidden access`)
           }
       }).catch(error => {
-          res.send(`Introduce a valid user id`)
+          res.send(`Introduce a valid user id`, error)
       })
 
   };

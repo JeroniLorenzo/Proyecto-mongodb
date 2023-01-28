@@ -40,7 +40,7 @@ SeriesController.getSerieByTittle = async (req, res) => {
     const tittle = req.params.tittle;
     
     try {
-      const foundSeries = await Serie.find({tittle: tittle});
+      const foundSeries = await Serie.find({"tittle": { "$regex": tittle, "$options": "i" }});
       if(!foundSeries.length){
         res.status(404);
         res.json({error: 'This title is not in our data base'});

@@ -2,7 +2,6 @@ const jsonwebtoken = require('jsonwebtoken');
 
 const authConfig = require('../config/auth');
 
-
 module.exports = (req, res, next) => {
 
     if(!req.headers.authorization) {
@@ -10,9 +9,7 @@ module.exports = (req, res, next) => {
         res.status(401).json({ msg: "Denied Acces" });
     } else {
 
-
         let token = req.headers.authorization.split(" ")[1];
-
 
         jsonwebtoken.verify(token, authConfig.SECRET, (err, decoded) => {
 
@@ -22,9 +19,7 @@ module.exports = (req, res, next) => {
 
             } else {
 
-                
                 req.user = decoded;
-               
                
                 next();
             }

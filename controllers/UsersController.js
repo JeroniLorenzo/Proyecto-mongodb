@@ -160,7 +160,6 @@ UsersController.loginUser = async (req, res) => {
                     let token = jsonwebtoken.sign( {id:userFound[0]._id, rol:userFound[0].rol } , authConfig.SECRET, {
                         expiresIn: authConfig.EXPIRES
                     });
-                
 
                     let loginOk = `Welcome back ${userFound[0].name}`;
                     res.json({

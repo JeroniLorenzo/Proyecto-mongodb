@@ -8,8 +8,8 @@ RentalsController.getAllRentals = async (req, res) => {
     try {
 
         let result = await Rental.find({})
-            .populate('user_id')
-            .populate('serie_id');
+            .populate('userId')
+            .populate('serieId');
 
         if (result.length > 0) {
             res.send(result)
@@ -24,24 +24,25 @@ RentalsController.getAllRentals = async (req, res) => {
 
 
 RentalsController.newRental = async (req, res) => {
-
+console.log(req.body)
+console.log()
     try {
 
         let user = await Rental.create({
-            userId: req.body.user_id,
-            serieId: req.body.serie_id,
-            fechaInicio: req.body.fechaInicio,
-            fechaFin: req.body.fechaFin,
+            userId: req.body.idUser,
+            serieId: req.body.idSerie,
+            fechaInicio: req.body.rentalDate,
+            fechaFin: req.body.returnDate,
             importe: req.body.importe
         })
 
         if (user) {
 
-            res.send({ "Message": `El alquiler ha sido un éxito` });
+            res.send( {"data": `El alquiler ha sido un éxito`});
 
         }else {
 
-            res.send({ "Message": `Ha habido un error en el alquiler` });
+            res.send({ "data": `Ha habido un error en el alquiler` });
 
         }
 

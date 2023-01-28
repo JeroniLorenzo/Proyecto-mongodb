@@ -2,19 +2,19 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const rentalSchema = new Schema ({
-    user_id: {
+    userId: {
         type: Schema.Types.ObjectId, ref: 'User',
         required: true
     },
-    serie_id: {
+    serieId: {
         type: Schema.Types.ObjectId, ref: 'Serie',
         required: true
     },
     fechaInicio: {
-        type: Date
+        type: String
     },
     fechaFin: {
-        type: Date
+        type: String
     },
     importe: { 
         type: Number
