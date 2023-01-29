@@ -20,12 +20,11 @@ RentalsController.getAllRentals = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 
 RentalsController.newRental = async (req, res) => {
-console.log(req.body)
-console.log()
+
     try {
 
         let user = await Rental.create({
@@ -33,8 +32,9 @@ console.log()
             serieId: req.body.idSerie,
             fechaInicio: req.body.rentalDate,
             fechaFin: req.body.returnDate,
-            importe: req.body.importe
+            importe: req.body.price
         })
+
 
         if (user) {
 
@@ -51,5 +51,23 @@ console.log()
     }
 
 };
+
+RentalsController.getUserRentals = async (req, res) =>{
+    try {
+
+        let result = await Rental.find({})
+            .populate('userId')
+            .populate('serieId');
+
+        if (result.length > 0) {
+            res.send(result)
+        } else {
+            res.send({ "Message": "Lo sentimos, no hemos encontrado ningún alquiler." })
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 module.exports = RentalsController;

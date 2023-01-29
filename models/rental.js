@@ -17,7 +17,7 @@ const rentalSchema = new Schema ({
         type: String
     },
     importe: { 
-        type: Number
+        type: String
     }
 
 });
