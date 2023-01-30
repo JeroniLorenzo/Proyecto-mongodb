@@ -30,6 +30,7 @@ RentalsController.newRental = async (req, res) => {
         let user = await Rental.create({
             userId: req.body.idUser,
             serieId: req.body.idSerie,
+            serieName: req.body.serieName,
             fechaInicio: req.body.rentalDate,
             fechaFin: req.body.returnDate,
             importe: req.body.price
@@ -53,11 +54,11 @@ RentalsController.newRental = async (req, res) => {
 };
 
 RentalsController.getUserRentals = async (req, res) =>{
+    let id = req.params.id
     try {
 
-        let result = await Rental.find({})
-            .populate('userId')
-            .populate('serieId');
+        let result = await Rental.find({userId: id })
+           
 
         if (result.length > 0) {
             res.send(result)
@@ -68,6 +69,6 @@ RentalsController.getUserRentals = async (req, res) =>{
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 module.exports = RentalsController;

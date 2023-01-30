@@ -10,6 +10,10 @@ const rentalSchema = new Schema ({
         type: Schema.Types.ObjectId, ref: 'Serie',
         required: true
     },
+    serieName: {
+        type: String,
+        required: true
+    },
     fechaInicio: {
         type: String
     },

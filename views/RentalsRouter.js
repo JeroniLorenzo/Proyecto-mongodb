@@ -10,7 +10,7 @@ const RentalsController = require('../controllers/RentalsController');
 
 router.get("/getAll", auth, isAdmin, RentalsController.getAllRentals);
 
-router.get("/userRentals", auth, RentalsController.getUserRentals);
+router.get("/userRentals/:id", auth, RentalsController.getUserRentals);
 
 router.post("/newRental", auth, RentalsController.newRental);
 
